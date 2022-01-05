@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/01/05 18:51:15 by jihong           ###   ########.fr       */
+/*   Updated: 2022/01/05 18:54:18 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ char *get_next_line(int fd)
 	if(fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	read_cnt = read(fd,prev_buff,BUFFER_SIZE); // 버퍼 사이즈만큼 반환
-	if (read_cnt < 0)
-		return (0);
+	while(read_cnt == )
 	line = prev_buff;
 	return (line);
 }
