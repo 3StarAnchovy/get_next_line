@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:46:12 by jihong            #+#    #+#             */
-/*   Updated: 2021/12/17 17:29:11 by jihong           ###   ########.fr       */
+/*   Updated: 2021/12/28 19:19:40 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strdup(char *str)
 {
 	size_t	len;
 	char 	*ret;
-	int		i;
+	size_t	i;
 
 	len = ft_strlen(str);
 	ret = (char *)malloc(sizeof(char) * (len+ 1));
