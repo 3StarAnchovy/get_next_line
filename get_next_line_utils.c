@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/17 15:46:12 by jihong            #+#    #+#             */
-/*   Updated: 2021/12/28 19:19:40 by jihong           ###   ########.fr       */
+/*   Updated: 2022/01/10 19:35:13 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,42 @@ char	*ft_strdup(char *str)
 	}
 	*(ret + i) = '\0';
 	return (ret);
+}
+
+char	*ft_strjoin(char *str1, char *str2)
+{
+	size_t	i;
+	char	*result;
+	int		j;
+
+	result = (char *)malloc(sizeof(char) * (ft_strlen(str1)) + (ft_strlen(str2)) + 1);
+	i = 0;
+	while (i < ft_strlen(str1))
+	{
+		result[i] = str1[i];
+		i ++;
+	}
+	j = 0;
+	while (i < ft_strlen(str1) + ft_strlen(str2))
+	{
+		result[i] = str2[j];
+		i ++;
+		j ++;
+	}
+	result[i] = '\0';
+	return (result);
+}
+
+char	*ft_strrchr(const char *str, int c)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	while (len != -1)
+	{
+		if (*(str + len) == (char)c)
+			return ((char *)(str + len));
+		len --;
+	}
+	return (NULL);
 }
