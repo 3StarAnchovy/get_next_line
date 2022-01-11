@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/01/10 20:07:57 by jihong           ###   ########.fr       */
+/*   Updated: 2022/01/11 20:31:30 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,30 @@
 
 #define BUFFER_SIZE 10
 
-static int get_nlidx(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (*(line + i) != '\0')
-	{
-		if (*(line + i) == '\n')
-			return (i);
-		i ++;
-	}
-	return (-1);
-}
 
 char *get_next_line(int fd)
 {
-	char *line;
-	char prev_buff[BUFFER_SIZE + 1];
-	static char	*tmp_buff;
+	char	*line; // 최종리턴값
+	char	buff[BUFFER_SIZE + 1];
+	static char	*st_save;
 	int	read_cnt;
 
 	line = NULL;
 	if(fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if(tmp_buff == NULL)
-		tmp_buff = ft_strdup("");
-	read_cnt = read(fd,prev_buff,BUFFER_SIZE); // 버퍼 사이즈만큼 반환
-	while(read_cnt > 0)
+	if (st_save == NULL)
+		st_save = ft_strdup("",1);
+	read_cnt = 1;
+	while(read_cnt != 0 && !(check_newline(st_save)))
 	{
-		prev_buff[read_cnt] = '\0';
-		tmp_buff = ft_strjoin(tmp_buff,prev_buff);
+		read_cnt = read(fd,buff,BUFFER_SIZE);
+		if (read_cnt == -1)
+			return (NULL);
+		buff[read_cnt] = '\0';
+		if (read_cnt == 0)
+			break;
+		st_save = ft_strjoin(st_save,buff);
 	}
-	line = prev_buff;
 	return (line);
 }
 
