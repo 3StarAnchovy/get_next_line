@@ -6,15 +6,15 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/01/12 16:51:33 by jihong           ###   ########.fr       */
+/*   Updated: 2022/01/12 18:24:52 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-#define BUFFER_SIZE 10
+#define BUFFER_SIZE 99
 
-static char*get_line(char *str)
+static char	*get_line(char *str)
 {
 	int	i;
 	char *line;
@@ -46,12 +46,12 @@ static char	*split_line(char *str)
 		free(str);
 		return (0);
 	}
-	line = ft_strndup(&str[i - 1], str_len - i);
+	line = ft_strndup(&str[i + 1], str_len - i);
 	line[str_len - i] = '\0';
 	return (line);
 }
 
-char *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	char	*line; // 최종리턴값
 	char	buff[BUFFER_SIZE + 1];
@@ -78,14 +78,17 @@ char *get_next_line(int fd)
 	st_save = split_line(st_save);
 	printf("백업 : %s\n",st_save);
 	return (line);
-	printf("백업");
 }
 
 int main(void)
 {
 	int fd;
 	fd = open("./test.txt",O_RDONLY);
-	printf("줄 : %s",get_next_line(fd));
+	printf("줄 : %s\n",get_next_line(fd));
+	printf("줄 : %s\n",get_next_line(fd));
+	printf("줄 : %s\n",get_next_line(fd));
+	printf("줄 : %s\n",get_next_line(fd));
+	printf("줄 : %s\n",get_next_line(fd));
 	//if(get_next_line(fd) == 1)
 	//	printf("%s",line);
 }
