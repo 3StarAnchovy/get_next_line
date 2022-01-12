@@ -6,13 +6,11 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/01/12 18:24:52 by jihong           ###   ########.fr       */
+/*   Updated: 2022/01/12 18:47:31 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-#define BUFFER_SIZE 99
 
 static char	*get_line(char *str)
 {
@@ -48,6 +46,8 @@ static char	*split_line(char *str)
 	}
 	line = ft_strndup(&str[i + 1], str_len - i);
 	line[str_len - i] = '\0';
+	if(ft_strlen(line) == 0)
+		return (free(line), NULL);
 	return (line);
 }
 
@@ -76,7 +76,6 @@ char	*get_next_line(int fd)
 	}
 	line = get_line(st_save);
 	st_save = split_line(st_save);
-	printf("백업 : %s\n",st_save);
 	return (line);
 }
 
@@ -92,3 +91,4 @@ int main(void)
 	//if(get_next_line(fd) == 1)
 	//	printf("%s",line);
 }
+
