@@ -13,9 +13,10 @@ int main(void)
 	char buff[BUFF_SIZE];
 
 	fd = open("./test.txt",O_RDONLY);
+	printf("%d",fd);
 	if (fd > 0)
 	{
-		read(fd,buff,BUFF_SIZE);
+		printf("%zd",read(fd,buff,BUFF_SIZE));
 		puts(buff);
 		close(fd);
 	}
