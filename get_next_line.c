@@ -6,12 +6,11 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/02/12 18:05:48 by jihong           ###   ########.fr       */
+/*   Updated: 2022/02/12 18:09:16 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*get_line(char *str)
 {
