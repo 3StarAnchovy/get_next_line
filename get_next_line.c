@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:11 by jihong            #+#    #+#             */
-/*   Updated: 2022/02/11 17:36:40 by jihong           ###   ########.fr       */
+/*   Updated: 2022/02/12 18:05:48 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,10 @@ static char	*split_line(char *str)
 	return (line);
 }
 
-char	*error_handle(char *st_save)
+void	error_handle(char **st_save)
 {
-	free((void *)st_save);
-	st_save = 0;
-	return (NULL);
+	free((void *)*st_save);
+	*st_save = 0;
 }
 
 char	*get_next_line(int fd)
@@ -81,7 +80,7 @@ char	*get_next_line(int fd)
 	{
 		read_cnt = read(fd, buff, BUFFER_SIZE);
 		if (read_cnt == -1)
-			return (NULL);
+			return (error_handle(&st_save), NULL);
 		buff[read_cnt] = '\0';
 		if (!read_cnt)
 			break ;

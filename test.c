@@ -13,6 +13,8 @@ int main(void)
 	char buff[BUFF_SIZE];
 
 	fd = open("./test.txt",O_RDONLY);
+	int d = read(fd,buff,BUFF_SIZE);
+	printf("%d  ",d);
 	printf("%d",fd);
 	if (fd > 0)
 	{
