@@ -6,7 +6,7 @@
 /*   By: jihong <jihong@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 16:31:57 by jihong            #+#    #+#             */
-/*   Updated: 2022/02/13 14:55:57 by jihong           ###   ########.fr       */
+/*   Updated: 2022/02/13 14:58:36 by jihong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ size_t	ft_strlen(const char *c);
 char	*ft_strndup(char *str, size_t n);
 int		check_newline(char *str);
 char	*ft_strjoin(char *str1, char *str2);
-char	*ft_strrchr(const char *str, int c);
 
 #endif
